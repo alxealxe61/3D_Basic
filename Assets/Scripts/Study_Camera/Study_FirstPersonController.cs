@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Study_FristPersonController : MonoBehaviour
+public class Study_FirstPersonController : MonoBehaviour
 {
     // WASD로 좌표이동
     // L-Shift로 달리기
@@ -13,10 +13,9 @@ public class Study_FristPersonController : MonoBehaviour
     [Header("Mouse Settings")] 
     [SerializeField] private float horizontalSensitivity = 1.0f;
     [SerializeField] private float verticalSensitivity = 1.0f;
-
+    
     //과제 힌트
     [SerializeField] private Transform cameraTransform;
-    [SerializeField] private bool activation;
     
     private void Start()
     {
@@ -31,19 +30,22 @@ public class Study_FristPersonController : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
-        
+    
         UpdatePosition();
         UpdateRotation();
-        activate();
-        UpdateCamrea();
     }
 
     //이동은 자기 local 기준 좌표계로 이동
     private void UpdatePosition()
     {
+        // .GetAxis와 .GetAxisRaw의 차이는 보정(입력에 따른 보간값)이 저용되느냐 차이 입니다.
+        // GetAxis의 경우 사용자 입력이 있을때는 1에서 시작해서, 없을때는 0까지 천천히 감속되어 적용됩니다.
+        // (GetAxis는 서서히 떨어짐)
+        // GetAxisRaw의 경우 사용자의 입력이 있을때는 무조건 1,  없을때는 바로 0으로 적용됩니다.
+        
         // 사용자의 입력 받기
         Vector2 inputAxis = 
-            new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         
         // 현재 transform의 올바른 좌표계로 바꿔주기
         Vector3 forward = transform.forward * inputAxis.y;
@@ -53,8 +55,8 @@ public class Study_FristPersonController : MonoBehaviour
         //입력에 따라 캐릭터가 이동할 방향벡터가 나옵니다.
         //(이제부터 moveVector라고 부르겠습니다)
         Vector3 moveVector = (forward + right).normalized;
-
-        transform.position += moveVector * moveSpeed * Time.deltaTime;
+        float applySpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : moveSpeed;
+        transform.position += moveVector * applySpeed * Time.deltaTime;
     }
 
     //회전도 자기 local 기준으로 회전.
@@ -67,25 +69,12 @@ public class Study_FristPersonController : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
         
         //아래 코드가 아님은 알았습니다.
+        // float mouseY = Input.GetAxis("Mouse Y") * verticalSensitivity;
+        // Transform.Rotate(Vector3.right * (-mouseY));
+        
+        // Y축 회전은 풀레이어의 회전에 반영하되
+        // X축 회전은 카메라 회전에 반영을 해야합니다
         float mouseY = Input.GetAxis("Mouse Y") * verticalSensitivity;
-        transform.Rotate(Vector3.right * (-mouseY));
-    }
-
-    private void UpdateCamrea()
-    {
-        if (activation == true)
-        {
-            cameraTransform.localPosition = new Vector3(0, 2, -20);
-        }
-        else
-        {
-            cameraTransform.localPosition = new Vector3(0, 2, 0);
-        }
-    }
-    
-    private void activate()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-            activation = !activation;
+        cameraTransform.Rotate(Vector3.right * (-mouseY));
     }
 }
