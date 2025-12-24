@@ -1,48 +1,50 @@
 ﻿using UnityEngine;
 
-public class ThirdPersonController : CameraController
+namespace Study_Camera.CameraController
 {
-    [SerializeField] private Transform cameraTarget;
-    [SerializeField] private Transform cameraTransform;
-    [SerializeField] private Transform headPivotTransform;
-    
-    [SerializeField] protected float maxAngleX = 90;
-    [SerializeField] protected float minAngleX = -90;
-    
-    private float angleX = 0.0f;
-    private float angleY = 0.0f;
-
-    protected override void Update()
+    public class ThirdPersonController : CameraController
     {
-        base.Update();
-        UpdateCameraRotation();
-    }
-
-    protected override void UpdateRotation()
-    {
-        Vector2 mouseInput = new Vector2(
-            Input.GetAxis("Mouse X") * horizontalSensitivity,
-            Input.GetAxis("Mouse Y") * verticalSensitivity);
+        [SerializeField] private Transform cameraTarget;
+        [SerializeField] private Transform cameraTransform;
+        [SerializeField] private Transform headPivotTransform;
         
-        angleX -= mouseInput.y;
-        angleX = Mathf.Clamp(angleX, minAngleX, maxAngleX);
+        [SerializeField] protected float maxAngleX = 90;
+        [SerializeField] protected float minAngleX = -90;
         
-        if (Input.GetKey(KeyCode.LeftAlt))
+        private Vector2 currentAngle = Vector2.zero; 
+        
+        protected override void Update()
         {
-            angleY += mouseInput.x;
-        }
-        else
-        {
-            transform.Rotate(Vector3.up, mouseInput.x);
-            angleY = 0.0f;
+            base.Update();
+            UpdateCameraRotation();
         }
 
-        headPivotTransform.localRotation = Quaternion.Euler(angleX, angleY, 0);
+        protected override void UpdateRotation()
+        {
+            Vector2 mouseInput = new Vector2(
+                Input.GetAxis("Mouse X") * horizontalSensitivity, 
+                Input.GetAxis("Mouse Y") * verticalSensitivity);
+            
+            currentAngle.x -= mouseInput.y;
 
-    }
-    
-    private void UpdateCameraRotation()
-    {
-        cameraTransform.LookAt(cameraTarget);
+            if (Input.GetKey(KeyCode.LeftAlt))
+            {
+                currentAngle.y += mouseInput.x;
+            }
+            else
+            {
+                transform.Rotate(Vector3.up, mouseInput.x);
+                currentAngle.y = 0.0f;
+            }
+            
+            currentAngle.x = Mathf.Clamp(currentAngle.x, minAngleX, maxAngleX);
+            headPivotTransform.localRotation = Quaternion.Euler(currentAngle);
+            
+        }
+
+        private void UpdateCameraRotation()
+        {
+            cameraTransform.LookAt(cameraTarget);
+        }
     }
 }

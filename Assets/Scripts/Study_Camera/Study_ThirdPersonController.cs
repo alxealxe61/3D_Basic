@@ -12,11 +12,15 @@ public class Study_ThirdPersonController : MonoBehaviour
     [Header("Mouse Settings")] 
     [SerializeField] private float horizontalSensitivity = 1.0f;
     [SerializeField] private float verticalSensitivity = 1.0f;
-    
-    //과제 힌트
+
     [SerializeField] private Transform cameraTarget;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private Transform headPivotTransform;
+    
+    private float angleX = 0.0f;
+    private float angleY = 0.0f;
+    [SerializeField] private float maxAngleX = 90;
+    [SerializeField] private float minAngleX = -90;
     
     private void Start()
     {
@@ -31,16 +35,17 @@ public class Study_ThirdPersonController : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
-    
+        
         UpdatePosition();
         UpdateRotation();
         UpdateCameraRotation();
     }
-    
+
+    //이동은 자기 local 기준 좌표계로 이동
     private void UpdatePosition()
     {
         Vector2 inputAxis = 
-            new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         
         Vector3 forward = transform.forward * inputAxis.y;
         Vector3 right = transform.right * inputAxis.x;
@@ -49,21 +54,16 @@ public class Study_ThirdPersonController : MonoBehaviour
         float applySpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : moveSpeed;
         transform.position += moveVector * applySpeed * Time.deltaTime;
     }
-
-    private float angleX = 0.0f;
-    private float angleY = 0.0f;
-    [SerializeField] private float maxAngleX = 90;
-    [SerializeField] private float minAngleX = -90;
-
+    
     //회전도 자기 local 기준으로 회전.
     private void UpdateRotation()
     {
         float mouseX = Input.GetAxis("Mouse X") * horizontalSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * verticalSensitivity;
-        
+
         angleX -= mouseY;
         angleX = Mathf.Clamp(angleX, minAngleX, maxAngleX);
-        
+
         if (Input.GetKey(KeyCode.LeftAlt))
         {
             angleY += mouseX;
@@ -74,8 +74,7 @@ public class Study_ThirdPersonController : MonoBehaviour
             angleY = 0.0f;
         }
         
-        headPivotTransform.localRotation = Quaternion.Euler(angleX,angleY, 0);
-        
+        headPivotTransform.localRotation = Quaternion.Euler(angleX, angleY, 0);
     }
 
     private void UpdateCameraRotation()
