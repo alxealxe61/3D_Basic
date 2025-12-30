@@ -1,71 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Study_Camera.Study_StatePattern.Standard
+namespace Study_Camera.Study_StatePattern.UsingMono
 {
-    public class BossAlfa : MonoBehaviour
+    public abstract class BaseState : MonoBehaviour
     {
-        private static readonly int BREATH = Animator.StringToHash("Breath");
-        private static readonly int ATTACK = Animator.StringToHash("Attack");
-    
-        [SerializeField] private Transform firePoint;
-        [SerializeField] private ParticleSystem breathEffect; 
-    
-        [SerializeField] private Collider ScratchCollider;
-        [SerializeField] private Collider BreathCollider;
-        [SerializeField] private AnimEventReceiver AnimEventReciver;
-    
-        private Animator Animator { get; set; }
-    
-        private Dictionary<Type, BaseState> States { get; set; }
-        private BaseState CurrentState { get; set; }
-        private BaseState DefaultState { get; set; }
+        protected BossAlfa BossAlfa { get; private set; }
+        protected Animator BossAnimator { get; private set; }
         
+        public abstract void EnterState();
+        public abstract void ExitState();
+
         private void Awake()
         {
-            Animator = GetComponent<Animator>();
-            ScratchCollider.enabled = false;
-            BreathCollider.enabled = false;
-            
-            States = new Dictionary<Type, BaseState>();
-            States.Add(typeof(IdleState), new IdleState());
-            States.Add(typeof(BreathState), new BreathState());
-            States.Add(typeof(ScratchState), new ScratchState());
-            
-            DefaultState = States[typeof(IdleState)];
-
-            BaseState.StateControllerParameter param =  new BaseState.StateControllerParameter();
-            param.bossAlfa = this;
-            param.BreathCollider = BreathCollider;
-            param.ScratchCollider = ScratchCollider;
-            param.breathEffect = breathEffect;
-            param.firePoint = firePoint;
-            param.bossAnimator = Animator;
-            param.AnimEventReceiver = AnimEventReciver;
-            
-            foreach (var state in States.Values)
-            {
-                state.Initialize(param);
-            }
-
-            ChangeState<IdleState>();
-        }
-
-        private void Update()
-        {
-            CurrentState.UpdateState(Time.deltaTime);
-        }
-
-        public void ChangeState<T>() where T : BaseState
-        {
-            var prevState = CurrentState;
-            prevState?.ExitState();
-
-            CurrentState = DefaultState;
-            if (States.ContainsKey(typeof(T))) CurrentState = States[typeof(T)];
-            CurrentState.EnterState();
-            Debug.Log($"{prevState?.GetType().Name} changed to {CurrentState.GetType().Name}");
+            BossAlfa = GetComponentInParent<BossAlfa>();
+            BossAnimator = GetComponentInParent<Animator>();
         }
     }
 }

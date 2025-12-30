@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Study_Camera.CombatSystem;
+using UnityEngine;
 
 namespace Study_Camera.Study_StatePattern.Standard
 {
@@ -8,7 +9,6 @@ namespace Study_Camera.Study_StatePattern.Standard
         
         private Collider ScratchCollider;
         private AnimEventReceiver receiver;
-        
         public override void Initialize(StateControllerParameter parameter)
         {
             base.Initialize(parameter);
@@ -34,8 +34,6 @@ namespace Study_Camera.Study_StatePattern.Standard
             ScratchCollider.enabled = false;
             receiver.OnAnimationTriggerReceived -= OnTriggeredEvent;
         }
-        
-        private const string ANIM_TRIGGER_PARAM = "Attack_End";
         
         private const string ATP_COLLIDER_ON = "Attack_Collider_On";
         private const string ATP_COLLIDER_OFF = "Attack_Collider_Off";

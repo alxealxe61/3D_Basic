@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Study_Camera.Study_StatePattern.Standard
 {
@@ -31,6 +32,11 @@ namespace Study_Camera.Study_StatePattern.Standard
                         BossAlfa.ChangeState<IdleState>();
                         break;
                 }
+            }
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                BossAlfa.ChangeState<DeadState>();
             }
         }
 

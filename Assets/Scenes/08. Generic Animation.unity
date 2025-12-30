@@ -119,6 +119,32 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &147675487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7679855335667821328, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
+  m_PrefabInstance: {fileID: 247473587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &147675488 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 6944099348558058592, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
+  m_PrefabInstance: {fileID: 247473587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &147675491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147675487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8c88855f0c41f8a43f5786e7c1602c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.BossBreathDetector
+  <DetectionLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 4096
+  <Collider>k__BackingField: {fileID: 147675488}
 --- !u!1001 &247473587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -171,10 +197,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6944099348558058592, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5652259283180152348, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2048439136}
+    - targetCorrespondingSourceObject: {fileID: 7679855335667821328, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 147675491}
   m_SourcePrefab: {fileID: 100100000, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
 --- !u!1001 &389675718
 PrefabInstance:
@@ -242,7 +278,7 @@ GameObject:
   - component: {fileID: 486777145}
   - component: {fileID: 486777148}
   - component: {fileID: 486777149}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CapsulePlayer (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,8 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a8d616ba0e3ca4e9e491f8eb7da47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CapsuleDoll
-  CapsuleDollRenderer: {fileID: 486777146}
-  CapsuleDollCollider: {fileID: 486777145}
+  myRenderer: {fileID: 0}
 --- !u!54 &486777149
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -399,7 +434,7 @@ GameObject:
   - component: {fileID: 711065820}
   - component: {fileID: 711065823}
   - component: {fileID: 711065824}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CapsulePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -513,8 +548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a8d616ba0e3ca4e9e491f8eb7da47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CapsuleDoll
-  CapsuleDollRenderer: {fileID: 711065821}
-  CapsuleDollCollider: {fileID: 711065820}
+  myRenderer: {fileID: 0}
 --- !u!54 &711065824
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -555,8 +589,6 @@ GameObject:
   - component: {fileID: 753942923}
   - component: {fileID: 753942922}
   - component: {fileID: 753942927}
-  - component: {fileID: 753942929}
-  - component: {fileID: 753942928}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -655,33 +687,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 753942921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &753942928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 753942921}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76b5ec6153a1d55438228df10fe66844, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &753942929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 753942921}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02536f33053638549ab5c50ff3ecc0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &783498425
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +736,7 @@ GameObject:
   - component: {fileID: 783498427}
   - component: {fileID: 783498430}
   - component: {fileID: 783498431}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CapsulePlayer (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,8 +850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a8d616ba0e3ca4e9e491f8eb7da47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CapsuleDoll
-  CapsuleDollRenderer: {fileID: 783498428}
-  CapsuleDollCollider: {fileID: 783498427}
+  myRenderer: {fileID: 0}
 --- !u!54 &783498431
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1341,7 +1380,7 @@ GameObject:
   - component: {fileID: 1999623295}
   - component: {fileID: 1999623298}
   - component: {fileID: 1999623299}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CapsulePlayer (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1455,8 +1494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a8d616ba0e3ca4e9e491f8eb7da47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CapsuleDoll
-  CapsuleDollRenderer: {fileID: 1999623296}
-  CapsuleDollCollider: {fileID: 1999623295}
+  myRenderer: {fileID: 0}
 --- !u!54 &1999623299
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1484,6 +1522,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &2048439132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5652259283180152348, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
+  m_PrefabInstance: {fileID: 247473587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &2048439133 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 8359527722131910966, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
+  m_PrefabInstance: {fileID: 247473587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2048439136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048439132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8c88855f0c41f8a43f5786e7c1602c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.BossBreathDetector
+  <DetectionLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 4096
+  <Collider>k__BackingField: {fileID: 2048439133}
 --- !u!1 &2087994688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1562,7 @@ GameObject:
   - component: {fileID: 2087994690}
   - component: {fileID: 2087994693}
   - component: {fileID: 2087994694}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CapsulePlayer (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1612,8 +1676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a8d616ba0e3ca4e9e491f8eb7da47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CapsuleDoll
-  CapsuleDollRenderer: {fileID: 2087994691}
-  CapsuleDollCollider: {fileID: 2087994690}
+  myRenderer: {fileID: 0}
 --- !u!54 &2087994694
 Rigidbody:
   m_ObjectHideFlags: 0

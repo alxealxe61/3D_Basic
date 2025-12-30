@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Study_Camera.CombatSystem;
+using UnityEngine;
 
 namespace Study_Camera.Study_StatePattern.Standard
 {
@@ -11,7 +12,7 @@ namespace Study_Camera.Study_StatePattern.Standard
         private Collider BreathCollider;
         private Transform firePoint;
         private AnimEventReceiver receiver;
-
+        
         public override void Initialize(StateControllerParameter parameter)
         {
             base.Initialize(parameter);
@@ -26,7 +27,8 @@ namespace Study_Camera.Study_StatePattern.Standard
             breathEffect.gameObject.SetActive(true);
             breathEffect.Play();
             isBreathing = true;
-            
+            BreathCollider.enabled = true;
+
             receiver.OnAnimationTriggerReceived += OnTriggeredEvent;
             
             BossAnimator.SetTrigger(BREATH);
@@ -43,11 +45,11 @@ namespace Study_Camera.Study_StatePattern.Standard
         public override void ExitState()
         {
             isBreathing = false;
-           
-            breathEffect.gameObject.SetActive(false);
+            BreathCollider.enabled = false;
             receiver.OnAnimationTriggerReceived -= OnTriggeredEvent;
+            breathEffect.gameObject.SetActive(false);
         }
-        
+
         private const string ATP_COLLIDER_ON = "Breath_Collider_On";
         private const string ATP_COLLIDER_OFF = "Breath_Collider_Off";
         private const string ATP_ANIM_END = "Breath_End";

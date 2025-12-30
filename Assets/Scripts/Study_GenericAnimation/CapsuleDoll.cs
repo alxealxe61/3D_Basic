@@ -1,48 +1,51 @@
 using System;
 using System.Collections;
+using Study_Camera.CombatSystem;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class CapsuleDoll : MonoBehaviour
+public class CapsuleDoll : MonoBehaviour , ICombatAgent
 {
-    [SerializeField] private Renderer CapsuleDollRenderer;
-    [SerializeField] private Collider CapsuleDollCollider;
+     [SerializeField] private Renderer myRenderer;
 
-   
-    private void OnTriggerEnter (Collider others)
-    {
-        StartCoroutine(RespawnCoroutine());
-        Debug.Log("아야");
-    }
+     private void Awake()
+     {
+          myRenderer = GetComponent<Renderer>();
+     }
+
+     private void Start()
+     {
+          var allHurtBox = GetComponentsInChildren<HurtBox>();
+          foreach (var hurtBox in allHurtBox) hurtBox.Initialize(this);
+     }
+
+     public void TakeDamage(int damage)
+     {
+          StartCoroutine(DamageColorCoroutine(damage));
+     }
+
+     public void OnHitDetected(HitInfo hitInfo)
+     {
+        
+     }
     
-    private IEnumerator RespawnCoroutine()
-    {
-        // airPlaneRenderer가 갖고있는 Material의 Color값을 조정하여
-        // 깜빡거리는 효과를 준다.
+    
+    
+     private IEnumerator DamageColorCoroutine(int damage)
+     {
+          float sumTime = 0.0f;
+          Material material = myRenderer.material;
 
-        CapsuleDollCollider = GetComponent<Collider>();
-        
-        float sumTime = 0.0f;
-        Material material = CapsuleDollRenderer.material;
+          Color originalColor = material.color;
+          Color targetColor = damage == 10 ? Color.orange : Color.red;
+          material.color = targetColor;
 
-        Color originalColor = material.color;
-        Color targetColor = Color.red;
+          while (sumTime < 0.5f)
+          {
+               sumTime += Time.deltaTime;
+               yield return null;
+          }
 
-        CapsuleDollCollider.enabled = false;
-        
-        while (sumTime < 0.5f)
-        {
-            sumTime += Time.deltaTime;
-
-            float t = sumTime;
-            material.color = Color.Lerp(originalColor, targetColor, t);
-
-            yield return null;
-        }
-
-        CapsuleDollCollider.enabled = true;
-        
-        material.color = originalColor;
-        Debug.Log("빨강");
-    }
+          material.color = originalColor;
+     }
 }
