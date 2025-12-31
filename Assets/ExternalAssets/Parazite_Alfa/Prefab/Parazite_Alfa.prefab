@@ -28,8 +28,7 @@ Transform:
   m_LocalPosition: {x: -0.624826, y: 0.00000019378662, z: 0}
   m_LocalScale: {x: 0.999994, y: 1.0000035, z: 1.0000026}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2006690042615269468}
+  m_Children: []
   m_Father: {fileID: 4154281573239834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1061061429086602
@@ -301,6 +300,7 @@ GameObject:
   - component: {fileID: 95397136080106974}
   - component: {fileID: 5428445669453639858}
   - component: {fileID: 5818230405099034346}
+  - component: {fileID: 4828945150764249440}
   m_Layer: 0
   m_Name: Parazite_Alfa
   m_TagString: Untagged
@@ -377,6 +377,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64747c868dd940a5bfad092801f36547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.Study_StatePattern.UsingMono.BossAlfa
+--- !u!114 &4828945150764249440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230210909427796}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b3007c973f408f8e46b832792fbe55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.Study_StatePattern.Standard.BossAlfa
+  firePoint: {fileID: 8438270711598751324}
+  breathEffect: {fileID: 2716658738973514904}
+  ScratchCollider: {fileID: 0}
+  BreathCollider: {fileID: 6944099348558058592}
+  AnimEventReciver: {fileID: 5428445669453639858}
 --- !u!1 &1258322528746734
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +422,8 @@ Transform:
   m_LocalPosition: {x: -2.3669536, y: -4.181297, z: -4.2091}
   m_LocalScale: {x: 1.0000111, y: 0.99999744, z: 0.999993}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6558259680599287912}
   m_Father: {fileID: 4267933216003428}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1275510579811440
@@ -989,6 +1007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4792972655185692}
   - component: {fileID: 259903375175055579}
+  - component: {fileID: 7359918106979945452}
   m_Layer: 13
   m_Name: CATRigHub005
   m_TagString: Untagged
@@ -1036,6 +1055,18 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7359918106979945452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739581178261692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09defeb334314d298c8cb6f99c852ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.HurtBox
 --- !u!1 &1741309237421882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,7 +1254,8 @@ Transform:
   m_LocalPosition: {x: 2.515423, y: -4.183958, z: -3.7601233}
   m_LocalScale: {x: 0.99999386, y: 1.0000046, z: 1.0000021}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2006690042615269468}
   m_Father: {fileID: 4267933216003428}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1942713183343344
@@ -1457,6 +1489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4770421700522556}
   - component: {fileID: 93686279462692400}
+  - component: {fileID: 4156737505029769310}
   m_Layer: 13
   m_Name: CATRigHub001
   m_TagString: Untagged
@@ -1506,6 +1539,18 @@ CapsuleCollider:
   m_Height: 4.5
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4156737505029769310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995444011128258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09defeb334314d298c8cb6f99c852ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.HurtBox
 --- !u!1 &16723880138976066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,6 +1584,7 @@ Transform:
   - {fileID: 2702322963036822913}
   - {fileID: 4715123612580670088}
   - {fileID: 527858530879339916}
+  - {fileID: 9018941509792688048}
   m_Father: {fileID: 4267933216003428}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &143586098326824323
@@ -1622,6 +1668,54 @@ MonoBehaviour:
   firePoint: {fileID: 8438270711598751324}
   receiver: {fileID: 5428445669453639858}
   detector: {fileID: 8922717731297802131}
+--- !u!1 &2868740586055644277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9018941509792688048}
+  - component: {fileID: 1487185630299070862}
+  m_Layer: 0
+  m_Name: Attack(3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9018941509792688048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2868740586055644277}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7090022025502683799}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1487185630299070862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2868740586055644277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61fd915b6dbb4a189827a2126793838d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.Study_StatePattern.UsingMono.Attack_3_State
+  leftCollider: {fileID: 340772796057517371}
+  rightCollider: {fileID: 6119497898910188293}
+  receiver: {fileID: 5428445669453639858}
+  detector: {fileID: 7169036870040046947}
 --- !u!1 &4445139515005069765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,9 +1760,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325c5f62be4c42a288e4ab075baf7afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.Study_StatePattern.UsingMono.ScratchState
-  ScratchCollider: {fileID: 8359527722131910966}
+  ScratchCollider: {fileID: 340772796057517371}
   receiver: {fileID: 5428445669453639858}
   detector: {fileID: 5889240474845778596}
+--- !u!1 &4838900388901811583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6558259680599287912}
+  - component: {fileID: 6119497898910188293}
+  - component: {fileID: 7169036870040046947}
+  m_Layer: 0
+  m_Name: Hitbox(Attack(3))
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6558259680599287912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4838900388901811583}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.313, y: 0.22, z: -0.319}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4360218685232206}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6119497898910188293
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4838900388901811583}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.84
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7169036870040046947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4838900388901811583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05bda66144aa4d5d99675da374af9691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.BossAttack_3_Detector
+  <DetectionLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 4096
+  <leftCollider>k__BackingField: {fileID: 340772796057517371}
+  <rightCollider>k__BackingField: {fileID: 6119497898910188293}
 --- !u!1 &5652259283180152348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,8 +1845,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2006690042615269468}
-  - component: {fileID: 8359527722131910966}
   - component: {fileID: 5889240474845778596}
+  - component: {fileID: 340772796057517371}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -1695,36 +1862,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5652259283180152348}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.00000050663937, y: 1, z: -0.00000017881389, w: 0.0000005811452}
+  m_LocalPosition: {x: -0.229, y: 0.164, z: 0.303}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4053980738216504}
+  m_Father: {fileID: 4364659411508642}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &8359527722131910966
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5652259283180152348}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 3.1
-  m_Direction: 2
-  m_Center: {x: -0.27, y: 0, z: -0.81}
 --- !u!114 &5889240474845778596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1740,7 +1884,30 @@ MonoBehaviour:
   <DetectionLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 4096
-  <Collider>k__BackingField: {fileID: 8359527722131910966}
+  <Collider>k__BackingField: {fileID: 340772796057517371}
+--- !u!136 &340772796057517371
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5652259283180152348}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.95
+  m_Direction: 2
+  m_Center: {x: 0.03, y: 0, z: 0}
 --- !u!1 &7478788687563423826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,9 +2002,9 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Height: 6
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: -2}

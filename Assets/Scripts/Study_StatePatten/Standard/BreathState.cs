@@ -13,6 +13,8 @@ namespace Study_Camera.Study_StatePattern.Standard
         private Transform firePoint;
         private AnimEventReceiver receiver;
         
+        private BossBreathDetector detector;
+        
         public override void Initialize(StateControllerParameter parameter)
         {
             base.Initialize(parameter);
@@ -24,6 +26,8 @@ namespace Study_Camera.Study_StatePattern.Standard
 
         public override void EnterState()
         {
+            detector.EnableDetection();
+            
             breathEffect.gameObject.SetActive(true);
             breathEffect.Play();
             isBreathing = true;
@@ -44,6 +48,7 @@ namespace Study_Camera.Study_StatePattern.Standard
 
         public override void ExitState()
         {
+            detector.DisableDetection();
             isBreathing = false;
             BreathCollider.enabled = false;
             receiver.OnAnimationTriggerReceived -= OnTriggeredEvent;

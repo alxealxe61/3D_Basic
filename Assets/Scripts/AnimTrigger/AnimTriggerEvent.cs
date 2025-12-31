@@ -17,6 +17,9 @@ public class AnimTriggerEvent
     
     public void InvokeEvent()
     {
+        if (stateEventSender == null) return;
+        if (stateEventSender.receiver == null) return;
+        
         stateEventSender.receiver.OnAnimationTriggerReceived?.Invoke(parameter);
     }
 }

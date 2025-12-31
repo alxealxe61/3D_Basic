@@ -21,6 +21,7 @@ public class CapsuleDoll : MonoBehaviour , ICombatAgent
 
      public void TakeDamage(int damage)
      {
+          if (isDamageAble == false) return; 
           StartCoroutine(DamageColorCoroutine(damage));
      }
 
@@ -28,8 +29,8 @@ public class CapsuleDoll : MonoBehaviour , ICombatAgent
      {
         
      }
-    
-    
+
+     private bool isDamageAble = true;
     
      private IEnumerator DamageColorCoroutine(int damage)
      {
@@ -40,12 +41,16 @@ public class CapsuleDoll : MonoBehaviour , ICombatAgent
           Color targetColor = damage == 10 ? Color.orange : Color.red;
           material.color = targetColor;
 
+          isDamageAble = false;
+          
           while (sumTime < 0.5f)
           {
                sumTime += Time.deltaTime;
                yield return null;
           }
 
+          isDamageAble = true;
+          
           material.color = originalColor;
      }
 }

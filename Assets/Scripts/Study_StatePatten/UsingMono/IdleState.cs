@@ -20,7 +20,7 @@ namespace Study_Camera.Study_StatePattern.UsingMono
             if (timer >= WAIT_TIME)
             {
                 // 상태 전이 코드를 넣는다
-                int randNum = UnityEngine.Random.Range(0, 2);
+                int randNum = UnityEngine.Random.Range(0, 3);
                 switch (randNum)
                 {
                     case 0 :
@@ -28,6 +28,9 @@ namespace Study_Camera.Study_StatePattern.UsingMono
                         break;
                     case 1 :
                         BossAlfa.ChangeState<BreathState>();
+                        break;
+                    case 2 :
+                        BossAlfa.ChangeState<Attack_3_State>();
                         break;
                     default:
                         BossAlfa.ChangeState<IdleState>();

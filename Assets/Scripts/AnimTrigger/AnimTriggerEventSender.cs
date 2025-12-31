@@ -25,15 +25,14 @@ public class AnimTriggerEventSender : StateMachineBehaviour
             }
         }
         
-        enterEvent.Init(this);
-        exitEvent.Init(this);
-        
-        for (int i = 0; i < updateEvents.Length; i++)
+        if (enterEvent != null) enterEvent.Init(this);
+        if (exitEvent != null) exitEvent.Init(this);
+        if (updateEvents != null)
         {
-            updateEvents[i].Init(this);
+            for(int i = 0; i < updateEvents.Length; i++)
+                if (updateEvents[i] != null) updateEvents[i].Init(this);
         }
-        
-        if(enterEvent.IsNull == false) enterEvent.InvokeEvent();
+        if(enterEvent != null && enterEvent.IsNull == false) enterEvent.InvokeEvent();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

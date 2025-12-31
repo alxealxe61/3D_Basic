@@ -4,7 +4,7 @@ namespace Study_Camera.Study_ObjectPool
 {
     public class CombatEventBinder
     {
-        public void Run()
+        public void Enable()
         {
             CombatSystem.CombatSystem.Instance.Subscribe.OnSomeoneTakeDamage += OnSomeoneTakeDamage;
         }

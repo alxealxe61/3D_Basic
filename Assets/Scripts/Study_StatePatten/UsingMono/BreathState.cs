@@ -15,7 +15,7 @@ namespace Study_Camera.Study_StatePattern.UsingMono
         [SerializeField] private AnimEventReceiver receiver;
         
         [SerializeField] private BossBreathDetector detector;
-
+        
         protected override void Awake()
         {
             base.Awake();
@@ -25,13 +25,10 @@ namespace Study_Camera.Study_StatePattern.UsingMono
         public override void EnterState()
         {
             gameObject.SetActive(true);
-            
-            detector.EnableDetection();
+            receiver.OnAnimationTriggerReceived += OnTriggeredEvent;
             breathEffect.gameObject.SetActive(true);
             breathEffect.Play();
-            isBreathing = true;
-
-            receiver.OnAnimationTriggerReceived += OnTriggeredEvent;
+            
             
             BossAnimator.SetTrigger(BREATH);
         }
@@ -41,6 +38,7 @@ namespace Study_Camera.Study_StatePattern.UsingMono
             if (isBreathing)
             {
                 breathEffect.transform.position = firePoint.position;
+                detector.EnableDetection();
             }
         }
 
@@ -48,7 +46,6 @@ namespace Study_Camera.Study_StatePattern.UsingMono
         {
             detector.DisableDetection();
             gameObject.SetActive(false);
-            isBreathing = false;
             receiver.OnAnimationTriggerReceived -= OnTriggeredEvent;
         }
         
@@ -62,9 +59,11 @@ namespace Study_Camera.Study_StatePattern.UsingMono
             {
                 case ATP_COLLIDER_ON:
                     BreathCollider.enabled = true;
+                    isBreathing = true;
                     break;
                 case ATP_COLLIDER_OFF:
                     BreathCollider.enabled = false;
+                    isBreathing = false;
                     break;
                 case ATP_ANIM_END:
                     BossAlfa.ChangeState<IdleState>();
