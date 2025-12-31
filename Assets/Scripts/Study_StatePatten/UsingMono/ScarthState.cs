@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Study_Camera.CombatSystem;
+using UnityEngine;
 
 namespace Study_Camera.Study_StatePattern.UsingMono
 {
@@ -8,9 +10,17 @@ namespace Study_Camera.Study_StatePattern.UsingMono
         
         [SerializeField] private Collider ScratchCollider;
         [SerializeField] private AnimEventReceiver receiver;
-        
+        [SerializeField] private BossScratchDetector detector;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            detector.Initialize(BossAlfa);
+        }
+
         public override void EnterState()
         {
+            detector.EnableDetection();
             gameObject.SetActive(true);
             ScratchCollider.enabled = true;
             BossAnimator.SetTrigger(ATTACK);
@@ -20,6 +30,7 @@ namespace Study_Camera.Study_StatePattern.UsingMono
 
         public override void ExitState()
         {
+            detector.DisableDetection();
             gameObject.SetActive(false);
             ScratchCollider.enabled = false;
             receiver.OnAnimationTriggerReceived -= OnTriggeredEvent;

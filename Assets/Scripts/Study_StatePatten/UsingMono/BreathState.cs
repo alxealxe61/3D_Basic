@@ -1,4 +1,5 @@
 ﻿using System;
+using Study_Camera.CombatSystem;
 using UnityEngine;
 
 namespace Study_Camera.Study_StatePattern.UsingMono
@@ -13,10 +14,19 @@ namespace Study_Camera.Study_StatePattern.UsingMono
         [SerializeField] private Transform firePoint;
         [SerializeField] private AnimEventReceiver receiver;
         
+        [SerializeField] private BossBreathDetector detector;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            detector.Initialize(BossAlfa);
+        }
+
         public override void EnterState()
         {
             gameObject.SetActive(true);
             
+            detector.EnableDetection();
             breathEffect.gameObject.SetActive(true);
             breathEffect.Play();
             isBreathing = true;
@@ -36,6 +46,7 @@ namespace Study_Camera.Study_StatePattern.UsingMono
 
         public override void ExitState()
         {
+            detector.DisableDetection();
             gameObject.SetActive(false);
             isBreathing = false;
             receiver.OnAnimationTriggerReceived -= OnTriggeredEvent;

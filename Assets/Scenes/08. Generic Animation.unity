@@ -119,32 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &147675487 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7679855335667821328, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
-  m_PrefabInstance: {fileID: 247473587}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &147675488 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 6944099348558058592, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
-  m_PrefabInstance: {fileID: 247473587}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &147675491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147675487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce8c88855f0c41f8a43f5786e7c1602c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.BossBreathDetector
-  <DetectionLayer>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 4096
-  <Collider>k__BackingField: {fileID: 147675488}
 --- !u!1001 &247473587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -197,21 +171,125 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6944099348558058592, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5652259283180152348, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 1995444011128258, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2048439136}
-    - targetCorrespondingSourceObject: {fileID: 7679855335667821328, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
+      addedObject: {fileID: 326205196}
+    - targetCorrespondingSourceObject: {fileID: 1739581178261692, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 147675491}
+      addedObject: {fileID: 1814554433}
   m_SourcePrefab: {fileID: 100100000, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
+--- !u!1 &309032373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 309032375}
+  - component: {fileID: 309032374}
+  m_Layer: 0
+  m_Name: ObjectPoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &309032374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309032373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ba0871f4c04ba486e9894bf5f0c1ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.Study_ObjectPool.ObjectPoolManager
+  fxObjectList:
+  - {fileID: 1410198388021601994, guid: 54ca959f4231550499f9dc939beb43ea, type: 3}
+  - {fileID: 2809569032370579949, guid: 2515f177f2ab6f74889bcae902487552, type: 3}
+--- !u!4 &309032375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309032373}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.32243, y: 0, z: -22.82563}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &326205193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1995444011128258, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
+  m_PrefabInstance: {fileID: 247473587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &326205196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326205193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09defeb334314d298c8cb6f99c852ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.HurtBox
+--- !u!1 &355540896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 355540898}
+  - component: {fileID: 355540897}
+  m_Layer: 0
+  m_Name: CombatSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &355540897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355540896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ea776384b847b6bc9a5e5a02c3d32d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.CombatSystem
+--- !u!4 &355540898
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355540896}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &389675718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -278,6 +356,7 @@ GameObject:
   - component: {fileID: 486777145}
   - component: {fileID: 486777148}
   - component: {fileID: 486777149}
+  - component: {fileID: 486777150}
   m_Layer: 12
   m_Name: CapsulePlayer (1)
   m_TagString: Untagged
@@ -315,7 +394,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -416,10 +495,22 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &486777150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486777143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09defeb334314d298c8cb6f99c852ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.HurtBox
 --- !u!1 &711065818
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,6 +525,7 @@ GameObject:
   - component: {fileID: 711065820}
   - component: {fileID: 711065823}
   - component: {fileID: 711065824}
+  - component: {fileID: 711065825}
   m_Layer: 12
   m_Name: CapsulePlayer
   m_TagString: Untagged
@@ -471,7 +563,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -572,10 +664,22 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &711065825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711065818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09defeb334314d298c8cb6f99c852ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.HurtBox
 --- !u!1 &753942921
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,6 +693,7 @@ GameObject:
   - component: {fileID: 753942923}
   - component: {fileID: 753942922}
   - component: {fileID: 753942927}
+  - component: {fileID: 753942928}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -722,6 +827,22 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &753942928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753942921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e570eef62cf548d5bdffc584ae87d6d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.Study_ObjectPool.MouseRaycaster
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  hitFX: {fileID: 1410198388021601994, guid: 54ca959f4231550499f9dc939beb43ea, type: 3}
 --- !u!1 &783498425
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,6 +857,7 @@ GameObject:
   - component: {fileID: 783498427}
   - component: {fileID: 783498430}
   - component: {fileID: 783498431}
+  - component: {fileID: 783498432}
   m_Layer: 12
   m_Name: CapsulePlayer (4)
   m_TagString: Untagged
@@ -773,7 +895,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -874,10 +996,22 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &783498432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783498425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09defeb334314d298c8cb6f99c852ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.HurtBox
 --- !u!1 &939183508
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,50 +1046,6 @@ Transform:
   - {fileID: 2087994689}
   - {fileID: 1999623294}
   - {fileID: 783498426}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1052575693
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1052575695}
-  - component: {fileID: 1052575694}
-  m_Layer: 0
-  m_Name: Study_GenericAnimation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1052575694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052575693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1751731b24b44d4d985cd17f0c46c9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study_GenericAnimation
---- !u!4 &1052575695
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052575693}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1531, y: 3.51704, z: 1.99066}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1098040301
@@ -1093,6 +1183,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100002, guid: c099df4b1cec3784db452415cf995746, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c099df4b1cec3784db452415cf995746, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1366,6 +1460,23 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &1814554430 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1739581178261692, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
+  m_PrefabInstance: {fileID: 247473587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1814554433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814554430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09defeb334314d298c8cb6f99c852ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.HurtBox
 --- !u!1 &1999623293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,6 +1491,7 @@ GameObject:
   - component: {fileID: 1999623295}
   - component: {fileID: 1999623298}
   - component: {fileID: 1999623299}
+  - component: {fileID: 1999623300}
   m_Layer: 12
   m_Name: CapsulePlayer (3)
   m_TagString: Untagged
@@ -1417,7 +1529,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1518,36 +1630,22 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &2048439132 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5652259283180152348, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
-  m_PrefabInstance: {fileID: 247473587}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &2048439133 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 8359527722131910966, guid: ffcb354c95e48bc44acdf2492834e701, type: 3}
-  m_PrefabInstance: {fileID: 247473587}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2048439136
+--- !u!114 &1999623300
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2048439132}
+  m_GameObject: {fileID: 1999623293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce8c88855f0c41f8a43f5786e7c1602c, type: 3}
+  m_Script: {fileID: 11500000, guid: 09defeb334314d298c8cb6f99c852ea1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.BossBreathDetector
-  <DetectionLayer>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 4096
-  <Collider>k__BackingField: {fileID: 2048439133}
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.HurtBox
 --- !u!1 &2087994688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,6 +1660,7 @@ GameObject:
   - component: {fileID: 2087994690}
   - component: {fileID: 2087994693}
   - component: {fileID: 2087994694}
+  - component: {fileID: 2087994695}
   m_Layer: 12
   m_Name: CapsulePlayer (2)
   m_TagString: Untagged
@@ -1599,7 +1698,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1700,19 +1799,32 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2087994695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087994688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09defeb334314d298c8cb6f99c852ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Study_Camera.CombatSystem.HurtBox
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 753942926}
   - {fileID: 1280510092}
   - {fileID: 1161575702}
   - {fileID: 389675718}
   - {fileID: 247473587}
   - {fileID: 1098040303}
   - {fileID: 939183509}
-  - {fileID: 1052575695}
+  - {fileID: 355540898}
+  - {fileID: 753942926}
+  - {fileID: 309032375}

@@ -18,13 +18,24 @@ namespace Study_Camera.CombatSystem
     
     public class CombatSystem : SingletonBase<CombatSystem>
     {
+
+        public class Events
+        {
+            // 데미지를 입었을때
+            public Action<CombatEvent> OnSomeoneTakeDamage;
+            
+            // 누군가가 회복했을때
+            public Action<CombatEvent> OnSomeoneHeal;
+        }
+        public Events Subscribe { get; private set; } = new Events();
+        
         private const int EVENT_PROCESS_PER_FRAME = 10;
-        private Dictionary<Collider, HurtBox> HurtBoxDic { get; set; }
+        private Dictionary<Collider, IHitTargetPart> HitTargetDic  { get; set; }
         private Queue<CombatEvent> CombatEventQueue { get; set; }
         protected override void Awake()
         {
             base.Awake();
-            HurtBoxDic = new Dictionary<Collider, HurtBox>();
+            HitTargetDic  = new Dictionary<Collider, IHitTargetPart>();
             CombatEventQueue = new Queue<CombatEvent>();
         }
         
@@ -47,32 +58,31 @@ namespace Study_Camera.CombatSystem
         private void HandleCombatEvent(CombatEvent combatEvent)
         {
             combatEvent.Receiver.TakeDamage(combatEvent.Damage);
+            Subscribe.OnSomeoneTakeDamage?.Invoke(combatEvent);
         }
 
         #region HurtBox Management Methods
 
-        public void AddHurtBox(Collider col, HurtBox hurtBox)
+        public void AddHitBox(Collider col, HurtBox hurtBox)
         {
-            if(HurtBoxDic.ContainsKey(col) ==  false) return;
-            
-            HurtBoxDic.Add(col, hurtBox);
+            HitTargetDic.Add(col, hurtBox);
         }
 
-        public void RemoverHurtBox(Collider col, HurtBox hurtBox)
+        public void RemoverHitBox(Collider col, HurtBox hurtBox)
         {
-            if (HurtBoxDic.ContainsKey(col) == false) return;
-            HurtBoxDic.Remove(col);
+            if (HitTargetDic.ContainsKey(col) == false) return;
+            HitTargetDic.Remove(col);
         }
 
         // 먼저 HasHurtBox로 조회해 본 후 호출하세요. Null 처리 해놓지 않았습니다
-        public bool HasHurtBox(Collider col)
+        public bool HasHitTarget(Collider collider)
         {
-            return HurtBoxDic[col];
+            return HitTargetDic.ContainsKey(collider);
         }
 
-        public HurtBox GetHurtBox(Collider col)
+        public IHitTargetPart GetHitTarget(Collider collider)
         {
-            return HurtBoxDic[col];
+            return HitTargetDic[collider];
         }
         
         // 아래처럼 해도 무방합니다. 다만 Null을 반환할 수 있을 경우에는 함수명에 표현해주세요
