@@ -9,6 +9,7 @@ namespace Study_Camera.CombatSystem
         public ICombatAgent Owner { get; private set; }
         public Collider Collider {get; private set;}
 
+        
         public void Awake()
         {
             Collider = GetComponent<Collider>();
@@ -17,7 +18,7 @@ namespace Study_Camera.CombatSystem
         public void Initialize(ICombatAgent owner)
         {
             Owner = owner;
-            CombatSystem.Instance.AddHitBox(Collider, this );
+            CombatSystem.Instance.AddHitBox(Collider, this);
         }
         private void OnDestroy()
         {

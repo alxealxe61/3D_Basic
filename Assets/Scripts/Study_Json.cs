@@ -11,6 +11,9 @@ public class Study_Json : MonoBehaviour
         public int Level;
         public int EXP;
         public float HP;
+        public float MP;
+        public int Attack;
+        public int Defence;
     }
     
     private string savePath;
@@ -58,16 +61,65 @@ public class Study_Json : MonoBehaviour
         date.Level = 100;
         date.EXP = 1000;
         date.HP = 10.05f;
+        date.MP = 100.0f;
+        date.Attack = 100;
+        date.Defence = 100;
         
         var date2 = new SampleData();
         date2.Name = "Seyang";
         date2.Level = 100;
         date2.EXP = 1000;
         date2.HP = 10.05f;
+        date2.MP = 100.0f;
+        date2.Attack = 100;
+        date2.Defence = 100;
+        
+        var date3 = new SampleData();
+        date3.Name = "alex";
+        date3.Level = 100;
+        date3.EXP = 1000;
+        date3.HP = 10.05f;
+        date3.MP = 100.0f;
+        date3.Attack = 100;
+        date3.Defence = 100;
+        
+        
+        var date4 = new SampleData();
+        date4.Name = "mitten";
+        date4.Level = 100;
+        date4.EXP = 1000;
+        date4.HP = 10.05f;
+        date4.MP = 100.0f;
+        date4.Attack = 100;
+        date4.Defence = 100;
+        
+        
+        var date5 = new SampleData();
+        date5.Name = "박건준";
+        date5.Level = 100;
+        date5.EXP = 1000;
+        date5.HP = 10.05f;
+        date5.MP = 100.0f;
+        date5.Attack = 100;
+        date5.Defence = 100;
+        
+        var date6 = new SampleData();
+        date6.Name = "밑트";
+        date6.Level = 100;
+        date6.EXP = 1000;
+        date6.HP = 10.05f;
+        date6.MP = 100.0f;
+        date6.Attack = 100;
+        date6.Defence = 100;
+        
 
         List<SampleData> list = new();
         list.Add(date);
         list.Add(date2);
+        list.Add(date3);
+        list.Add(date4);
+        list.Add(date5);
+        list.Add(date6);
             
         JsonWriter.Save(list, path);
         

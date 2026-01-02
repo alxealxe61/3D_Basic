@@ -14,7 +14,8 @@ namespace Study_Camera.Study_ObjectPool
         private IPoolAbleObject PoolObject { get; set;}
         
         public void Initialize
-            (IPoolAbleObject sample, int startSize, int expandSize , Transform root = null)
+            (IPoolAbleObject sample, int startSize, 
+                int expandSize , Transform root = null)
         {
             PoolObject = sample;
             ExpandSize = expandSize;

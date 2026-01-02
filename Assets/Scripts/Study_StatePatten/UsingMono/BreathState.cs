@@ -44,6 +44,7 @@ namespace Study_Camera.Study_StatePattern.UsingMono
 
         public override void ExitState()
         {
+            isBreathing = false;
             detector.DisableDetection();
             gameObject.SetActive(false);
             receiver.OnAnimationTriggerReceived -= OnTriggeredEvent;
@@ -63,7 +64,6 @@ namespace Study_Camera.Study_StatePattern.UsingMono
                     break;
                 case ATP_COLLIDER_OFF:
                     BreathCollider.enabled = false;
-                    isBreathing = false;
                     break;
                 case ATP_ANIM_END:
                     BossAlfa.ChangeState<IdleState>();

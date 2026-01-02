@@ -15,9 +15,9 @@ MonoBehaviour:
   enterEvent:
     parameter: 
   updateEvents:
-  - parameter: Attack_Collider_On
-    timing: 0.13
-  - parameter: Attack_Collider_Off
+  - parameter: Breath_Collider_On
+    timing: 0.2
+  - parameter: Breath_Collider_Off
     timing: 0.6
   exitEvent:
     parameter: Breath_End
@@ -395,7 +395,7 @@ MonoBehaviour:
   - parameter: Attack_Collider_On
     timing: 0.1
   - parameter: Attack_Collider_Off
-    timing: 0.85
+    timing: 0.8
   exitEvent:
     parameter: Attack_End
 --- !u!1102 &6997209807956227734
