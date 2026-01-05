@@ -7,7 +7,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using UnityEngine;
 
-public static class TSVLoader
+public static class TSVReader
 {
     private static readonly CsvConfiguration TsvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
     {
@@ -24,7 +24,7 @@ public static class TSVLoader
     /// <typeparam name="T"> 매핑할 클래스 타입 (public getter/setter 필수)</typeparam>
     /// <param name="tableName"> 파일 이름 (확장자 제외)</param>
     /// <returns> 파싱된 데이터 리스트</returns>
-    public static async Task<List<T>> LoadTableAsync<T>(string tableName, bool isStreamingAssetPath = false)
+    public static async Task<List<T>> ReadTableAsync<T>(string tableName, bool isStreamingAssetPath = false)
     {
         string basePath = isStreamingAssetPath ? Application.streamingAssetsPath : Application.persistentDataPath;
         string folderPath = Path.Combine(basePath, "Table");
@@ -51,7 +51,36 @@ public static class TSVLoader
         }
         catch (Exception ex)
         {
-            Debug.LogError($"[TableLoader] {tableName}.tsv 로딩 실패: {ex.Message}");
+            Debug.LogError($"[TableReader] {tableName}.tsv 로딩 실패: {ex.Message}");
+            return null;
+        }
+    }
+
+    public static List<T> ReadTable<T>(string filePath)
+    {
+        if (File.Exists(filePath) == false)
+        {
+            Debug.LogError($"[TableReader] 파일이 존재하지 않습니다: {filePath}");
+            return null;
+        }
+
+        try
+        {
+            using var reader = new StreamReader(filePath);
+            using var csv = new CsvReader(reader, TsvConfig);
+
+            var records = new List<T>();
+            
+            foreach (var record in csv.GetRecords<T>())
+            {
+                records.Add(record);
+            }
+
+            return records;
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"[TableLoader] {filePath} 로딩 실패: {ex.Message}");
             return null;
         }
     }

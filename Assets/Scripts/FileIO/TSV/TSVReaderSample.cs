@@ -21,8 +21,8 @@ public class TSVReaderSample : MonoBehaviour
         //Application.persistentDataPath
         
         
-        TSVLoader.LoadTableAsync<SampleData>("DialogTable", true).ContinueWith(
-                (taskResult) =>
+        TSVReader.ReadTableAsync<SampleData>("DialogTable", true).ContinueWith(
+            (taskResult) =>
             {
                 var list = taskResult.Result;
 

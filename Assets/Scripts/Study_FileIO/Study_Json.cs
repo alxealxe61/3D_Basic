@@ -64,15 +64,17 @@ public class Study_Json : MonoBehaviour
         date.MP = 100.0f;
         date.Attack = 100;
         date.Defence = 100;
-        
-        var date2 = new SampleData();
-        date2.Name = "Seyang";
-        date2.Level = 100;
-        date2.EXP = 1000;
-        date2.HP = 10.05f;
-        date2.MP = 100.0f;
-        date2.Attack = 100;
-        date2.Defence = 100;
+
+        var date2 = new SampleData
+        {
+            Name = "Seyang",
+            Level = 100,
+            EXP = 1000,
+            HP = 10.05f,
+            MP = 100.0f,
+            Attack = 100,
+            Defence = 100,
+        };
         
         var date3 = new SampleData();
         date3.Name = "alex";
@@ -83,7 +85,6 @@ public class Study_Json : MonoBehaviour
         date3.Attack = 100;
         date3.Defence = 100;
         
-        
         var date4 = new SampleData();
         date4.Name = "mitten";
         date4.Level = 100;
@@ -92,7 +93,6 @@ public class Study_Json : MonoBehaviour
         date4.MP = 100.0f;
         date4.Attack = 100;
         date4.Defence = 100;
-        
         
         var date5 = new SampleData();
         date5.Name = "박건준";
@@ -112,7 +112,6 @@ public class Study_Json : MonoBehaviour
         date6.Attack = 100;
         date6.Defence = 100;
         
-
         List<SampleData> list = new();
         list.Add(date);
         list.Add(date2);
