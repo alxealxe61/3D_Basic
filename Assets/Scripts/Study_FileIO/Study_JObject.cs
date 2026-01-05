@@ -60,6 +60,17 @@ public class Study_JObject : MonoBehaviour
     }
 
     [Serializable]
+    private class Quest
+    {
+        public int QuestNumber { get; set; }
+
+        public Quest SetRandom()
+        {
+            QuestNumber = UnityEngine.Random.Range(0, 100);
+            return this;
+        }
+    }
+    [Serializable]
     private class Vector3
     {
         public float X { get; set; }
@@ -78,8 +89,7 @@ public class Study_JObject : MonoBehaviour
     
     List<EquipmentData> inventory = new List<EquipmentData>();
     Dictionary<string, EquipmentData> equipInventory =  new Dictionary<string, EquipmentData>();
-    
-
+    HashSet<Quest> quest = new HashSet<Quest>();
     private string savePath;
     
     void Start()
@@ -87,8 +97,8 @@ public class Study_JObject : MonoBehaviour
         savePath = Path.Combine(Application.persistentDataPath, "UserData");
         CreateUserDataModule();
         
-        //Save();
-        Load();
+        Save();
+        //Load();
         PrintUserDataModule();
     }
 
@@ -99,6 +109,8 @@ public class Study_JObject : MonoBehaviour
         var body = new EquipmentData().SetRandom();
         var leg = new EquipmentData().SetRandom();
         var foot = new EquipmentData().SetRandom();
+        
+        var Quest = new Quest();
         
         // 인벤토리에는 10개의 아이템이 있음
         inventory.Add(head);
@@ -120,6 +132,18 @@ public class Study_JObject : MonoBehaviour
         equipInventory.Add("leg", leg);
         equipInventory.Add("foot", foot);
         
+        quest.Add(Quest);
+        quest.Add(Quest);
+        quest.Add(Quest);
+        quest.Add(Quest);
+        quest.Add(Quest);
+        
+        quest.Add(new Quest().SetRandom());
+        quest.Add(new Quest().SetRandom());
+        quest.Add(new Quest().SetRandom());
+        quest.Add(new Quest().SetRandom());
+        quest.Add(new Quest().SetRandom());
+        
         UserDataModule = new IJsonDataModule[]
         {
             new JsonDataModule<string>("name", "Tester"),
@@ -133,7 +157,7 @@ public class Study_JObject : MonoBehaviour
             
             new ListDataModule<EquipmentData>("inventory", inventory),
             new DictionaryDataModule<string, EquipmentData>("equipInventory", equipInventory),
-            
+            new HashSetDataModule<Quest>("quest", quest),
         };
     }
 

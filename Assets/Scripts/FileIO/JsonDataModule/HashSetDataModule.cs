@@ -1,7 +1,31 @@
-﻿namespace Study.FileIO.JsonDataModule
+﻿using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+using UnityEngine.InputSystem;
+
+namespace Study.FileIO.JsonDataModule
 {
-    public class HashSetDataModule
+    public class HashSetDataModule<T> : IJsonDataModule
     {
-        // 업적 및 튜토리얼 
+        public string Key { get; private set; }
+        public HashSet<T> Value { get; private set; }
+        
+        public HashSetDataModule(string key, HashSet<T> defaultValue =  null)
+        {
+            Key = key;
+            Value = defaultValue ?? new HashSet<T>();
+        }
+        
+        public void OnLoad(JToken dataSegment)
+        {
+            if (dataSegment != null && dataSegment.Type == JTokenType.Null)
+            {
+                Value = dataSegment.ToObject<HashSet<T>>();
+            }
+        }
+
+        public JToken OnSave()
+        {
+            return JToken.FromObject(Value);
+        }
     }
 }
