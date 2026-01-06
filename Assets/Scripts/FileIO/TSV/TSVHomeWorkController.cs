@@ -52,7 +52,7 @@ public class TSVHomeWorkController : MonoBehaviour
                 GameObject cube = Instantiate(
                     cubePrefabs,
                     hit.point,
-                    Quaternion.identity,
+                    Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)),
                     CubeRoot
                 );
                 
@@ -102,7 +102,10 @@ public class TSVHomeWorkController : MonoBehaviour
     
     private void Load()
     {
-        if (!File.Exists(savePath))
+        // Not 연산자는 고유한 상태를 반전 시킬 때만 사용해야한다 
+        // Not 연산자는 잘 안보여서 
+        // 아래에 경우 사용 X
+        if (File.Exists(savePath) ==  false)
         {
             Debug.Log("저장된 TSV 파일이 없습니다.");
             return;
@@ -119,7 +122,7 @@ public class TSVHomeWorkController : MonoBehaviour
             GameObject cube = Instantiate(
                 cubePrefabs,
                 position,
-                Quaternion.identity,
+                Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)),
                 CubeRoot
             );
             cube.name = data.Key;

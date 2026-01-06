@@ -42,20 +42,20 @@ public class Study_JObject : MonoBehaviour
     public class EquipmentData
     {
         public string UniqueID { get; set; }
-        public int 강화Level { get; set; }
+        public int Level { get; set; }
         public int Durability { get; set; } // 내구도
 
         public EquipmentData SetRandom()
         {
             UniqueID = Guid.NewGuid().ToString(); // Guid = 전역적으 고유한 식별자를 만들어내는 클래스 
-            강화Level = UnityEngine.Random.Range(0, 100);
+            Level = UnityEngine.Random.Range(0, 100);
             Durability = UnityEngine.Random.Range(0, 100);
             return this;
         }
 
         public override string ToString()
         {
-            return $"{UniqueID},{강화Level}, {Durability}";
+            return $"{UniqueID},{Level}, {Durability}";
         }
     }
 
