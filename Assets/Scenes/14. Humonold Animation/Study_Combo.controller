@@ -41,7 +41,7 @@ MonoBehaviour:
     parameter: 
   updateEvents:
   - parameter: Input_Start
-    timing: 0.1
+    timing: 0
   - parameter: Input_End
     timing: 0.4
   exitEvent:
@@ -109,9 +109,9 @@ MonoBehaviour:
     parameter: 
   updateEvents:
   - parameter: Input_Start
-    timing: 0.1
+    timing: 0
   - parameter: Input_End
-    timing: 0.6
+    timing: 1
   exitEvent:
     parameter: 
 --- !u!1101 &-2375074915502404603
@@ -198,7 +198,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RPG-Animation
+  m_Name: Study_Combo
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Attack
@@ -302,7 +302,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 60, y: 90, z: 0}
-  m_ExitPosition: {x: 260, y: 120, z: 0}
+  m_ExitPosition: {x: 320, y: -20, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -2345669658889232805}
 --- !u!114 &6946430482004918834
@@ -321,9 +321,9 @@ MonoBehaviour:
     parameter: 
   updateEvents:
   - parameter: Input_Start
-    timing: 0.1
+    timing: 0
   - parameter: Input_End
-    timing: 0.4
+    timing: 1
   exitEvent:
     parameter: 
 --- !u!114 &7374596716401547288
