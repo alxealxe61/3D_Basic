@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Net.Sockets;
+using UnityEngine.Serialization;
 
 public class Study_BlendTree : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class Study_BlendTree : MonoBehaviour
     private static readonly int InputY = Animator.StringToHash("InputY");
     
     private static readonly int HitX = Animator.StringToHash("HitX");
-    private static readonly int HitY = Animator.StringToHash("HitY");
+    private static readonly int HitZ = Animator.StringToHash("HitZ");
     private static readonly int Hit = Animator.StringToHash("Hit");
 
     [SerializeField] private Transform HitTransform;
@@ -16,7 +18,9 @@ public class Study_BlendTree : MonoBehaviour
     private Vector2 GoalInput;
 
     [Range(0, 1)] [SerializeField] private float daming = 0.0f;
-    void Start()
+    
+   
+    void Awake()
     {
         animator = GetComponent<Animator>();
     }
@@ -39,7 +43,7 @@ public class Study_BlendTree : MonoBehaviour
         animator.SetFloat(InputX,  applyInput.x);
         animator.SetFloat(InputY,  applyInput.y);
         
-        transform.Translate(new Vector3(inputAxis.x,0.0f,inputAxis.y) * speed * Time.deltaTime);
+        transform.Translate(new Vector3(inputAxis.x,0,inputAxis.y) * speed * Time.deltaTime);
 
         
         // 공의 위치랑 내 위치를 그냥 그대로 가져오기?
@@ -54,12 +58,12 @@ public class Study_BlendTree : MonoBehaviour
             
             Vector3 localPosition = transform.InverseTransformPoint(HitTransform.position);
             // 아래와 동일함 
-            // Vector3 localPosition = HitTransform.position - transform.position
+            //Vector3 localPosition = HitTransform.position - transform.position;
             
             animator.SetTrigger(Hit);
             
             animator.SetFloat(HitX, localPosition.normalized.x);
-            animator.SetFloat(HitY, localPosition.normalized.z);
+            animator.SetFloat(HitZ, localPosition.normalized.z);
         }
     }
 }
