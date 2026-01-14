@@ -14,13 +14,12 @@ public class TestAnim : MonoBehaviour
     [SerializeField] private float dJumpPower = 6f;
     [SerializeField] private float wallRunSpeed = 6f;
     [SerializeField] private float wallCheckDistance = 1f;
-    [SerializeField] private float maxWallRunTime = 1.2f;
     
     [SerializeField] float wallRunDuration = 1.2f;   // n초
     [SerializeField] float wallSlideStartSpeed = 0.5f;
-    [SerializeField] float wallSlideAcceleration = 4f;
+    [SerializeField] float wallSlideAcceleration = 1.0f;
 
-    private float currentSlideSpeed;
+    [SerializeField] private float currentSlideSpeed = 1;
     
     // 상태 체크 
     private bool JDown;
@@ -33,7 +32,9 @@ public class TestAnim : MonoBehaviour
 
     private bool isWallRunningleft = true;
     private bool isWallRunningRight = true;
-    
+
+    private bool WJDown;
+    private bool isWJDown;
     
     void Awake()
     {
@@ -49,11 +50,12 @@ public class TestAnim : MonoBehaviour
         CheckWall();
         WallRun();
         transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        WallJump();
     }
 
     void HandleMove()
     {
-        rigidbody.MovePosition(rigidbody.position + Vector3.forward * 1 * Time.deltaTime);
+        rigidbody.MovePosition(rigidbody.position + Vector3.forward * speed * Time.deltaTime);
         // 좌 우 점프만 입력 받아야함 
 
         if (Input.GetKey(KeyCode.A) && isWallRunningleft == true)
@@ -71,6 +73,7 @@ public class TestAnim : MonoBehaviour
     {
         JDown = Input.GetButtonDown("Jump");
         JJDown = Input.GetButtonDown("Jump");
+        WJDown =  Input.GetButtonDown("Jump");
     }
 
     void Jump()
@@ -85,7 +88,6 @@ public class TestAnim : MonoBehaviour
             rigidbody.AddForce(Vector3.up * dJumpPower, ForceMode.Impulse);
             isJJDown = true;
         }
-        
     }
 
     void CheckWall()
@@ -110,18 +112,29 @@ public class TestAnim : MonoBehaviour
         }
     }
 
+    // 벽 점프 구현하고 
+
+    void WallJump()
+    {
+        if (WJDown && !isWJDown)
+        {
+            rigidbody.AddForce(Vector3.up * dJumpPower, ForceMode.Impulse);
+            isWJDown = true;
+        }
+         
+    }
+    
     void StartWallRun()
     {
         isWallRunning = true;
         wallRunTimer = 0f;
+        currentSlideSpeed = wallSlideStartSpeed;
         rigidbody.useGravity = false;
-        isJJDown = false;
     }
 
     void WallRun()
     {
         if (!isWallRunning) return;
-
         wallRunTimer += Time.fixedDeltaTime;
 
         // 1️⃣ 벽을 따라 앞으로 가는 방향
@@ -133,18 +146,20 @@ public class TestAnim : MonoBehaviour
         // 2️⃣ n초 동안은 완전한 벽 타기
         if (wallRunTimer < wallRunDuration)
         {
-            rigidbody.velocity = wallForward * wallRunSpeed;
+            rigidbody.linearVelocity = wallForward * wallRunSpeed;
         }
         // 3️⃣ 이후에는 점점 아래로 미끄러짐
         else
         {
+            // 여기에서 벽 점프 활성화 하기
+            isWJDown = false;
             currentSlideSpeed += wallSlideAcceleration * Time.fixedDeltaTime;
 
             Vector3 slideVelocity =
                 wallForward * wallRunSpeed
                 + Vector3.down * currentSlideSpeed;
 
-            rigidbody.velocity = slideVelocity;
+            rigidbody.linearVelocity = slideVelocity;
         }
 
         // 4️⃣ 벽이 사라지면 즉시 종료
@@ -153,14 +168,13 @@ public class TestAnim : MonoBehaviour
             StopWallRun();
         }
     }
-
+    
     void StopWallRun()
     {
         isWallRunning = false;
         rigidbody.useGravity = true;
-        isWallRunningleft = true;
-        isWallRunningRight = true;
     }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Untagged") )
@@ -177,6 +191,8 @@ public class TestAnim : MonoBehaviour
         {
             isJump = false;
             isJJDown = false;
+            isWallRunningleft = true;
+            isWallRunningRight = true;
             StopWallRun();
         }
     }
