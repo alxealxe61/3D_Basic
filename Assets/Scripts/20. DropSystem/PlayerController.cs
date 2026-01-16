@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
+    
     [Header("Movement Settings")]
     public float walkSpeed = 4f;
     public float runSpeed = 7f;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private float verticalLookRotation = 0f;
     private Quaternion initialCameraRotation;
 
+    private Vector3 currentPosition;
     // Start is called before the first frame update
     private void Start()
     {
@@ -45,6 +47,15 @@ public class PlayerController : MonoBehaviour
         UpdateMovement();
         UpdateCameraRotation();
         UpdateInput();
+
+        // 2미터 이상 이동하게 되면 갱신된 currentPosition을 OnMove 이벤트를 이용하여 
+        // 구독자들한테 전달
+        if (Vector3.Distance(transform.position, currentPosition) >= 2.0f)
+        {
+            currentPosition = transform.position;
+            //OnMove?.Invoke();
+        }
+        
     }
 
     private void UpdateMovement()
@@ -106,4 +117,5 @@ public class PlayerController : MonoBehaviour
         float rayLength = (controller.height / 2) + groundCheckDistance;
         Gizmos.DrawWireSphere(origin + Vector3.down * rayLength, controller.radius * 0.9f);
     }
+    
 }

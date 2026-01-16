@@ -1,0 +1,6 @@
+Key	Name	Description	Category	Parameter
+Place001	블록 배치하기	3개의 블록을 배치하세요	PlaceBlock	0_3
+Place002	블록 배치하기	5개의 블록을 배치하세요	PlaceBlock	0_5
+Remove001	블록 제거하기	3개의 블록을 제거하세요	RemoveBlock	0_3
+Place003	계단 배치하기	1개의 계단을 배치하세요	PlaceBlock	0_1
+Move001	이동하기	10미터 를 이동하세요	Move	0_1
